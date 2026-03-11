@@ -19,4 +19,6 @@ public:
 	virtual void HighlightActor() override;
 	virtual void UnHighlightActor() override;
 	
+	UPROPERTY(EditAnywhere)
+	bool bHighlighted;
 };
