@@ -94,7 +94,7 @@ void AAuraPlayerController::CursorTrace()
 	ThisActor = CursorHit.GetActor();
 	
 	/*
-	 * Line trace from the cursor. There are several sceanrios:
+	 * Line trace from the cursor. There are several scenarios:
 	 *	A. LastActor is null, ThisActor is null
 	 *		- Do nothing
 	 *	B. LastActor is null && ThisActor is valid
