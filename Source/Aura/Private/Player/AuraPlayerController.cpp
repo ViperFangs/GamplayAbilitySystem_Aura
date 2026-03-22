@@ -30,12 +30,13 @@ void AAuraPlayerController::BeginPlay()
 	
 	// Get the Enhanced Input subsystem that belongs to "this" player.
 	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-	// Assert that the Subsystem pointer is resolved.
-	check(Subsystem);
-
-	// Add the AuraContext to "this player".
-	// AuraContext contains the default input for the player.
-	Subsystem->AddMappingContext(AuraContext, 0);
+	// For Multiplayer, we need to check if the Subsystem is available instead of erroring out here 
+	if (Subsystem)
+	{
+		// Add the AuraContext to "this player".
+		// AuraContext contains the default input for the player.
+		Subsystem->AddMappingContext(AuraContext, 0);
+	}
 	
 	// Show the mouse cursor
 	bShowMouseCursor = true;
