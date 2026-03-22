@@ -43,6 +43,7 @@ public:
 	// This function will take a FWidgetControllerParams to set the values for the member variables of UAuraWidgetController
 	UFUNCTION(BlueprintCallable)
 	void SetWidgetControllerParams(const FWidgetControllerParams WCParams);
+	virtual void BroadcastInitialValues();
 	
 protected:
 	// Declare variables that the controller will use to get/broacast the data for the widgets
