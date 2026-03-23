@@ -6,6 +6,7 @@
 #include "UI/WidgetController/AuraWidgetController.h"
 #include "OverlayWidgetController.generated.h"
 
+struct FOnAttributeChangeData;
 // Delegate type that broadcasts a float (example: NewHealth) to all listeners when Health changes.
 // Any function binding to this must accept a float parameter.
 // The signature is just the shape of the function it expects, it doesn't exist yet. We are defining the TYPE here.
@@ -23,6 +24,7 @@ class AURA_API UOverlayWidgetController : public UAuraWidgetController
 public:
 	// This function will be used to initialize the default values on the overlay
 	virtual void BroadcastInitialValues() override;
+	virtual void BindCallbacksToDependencies() override;
 	
 	// Create member variables for the class
 	// These are the INSTANCES of the TYPE defined in the delegate function created.
@@ -31,4 +33,8 @@ public:
 	
 	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
 	FOnMaxHealthChangedSignature OnMaxHealthChanged;
+	
+protected:
+	void HealthChanged(const FOnAttributeChangeData& Data) const;
+	void MaxHealthChanged(const FOnAttributeChangeData& Data) const;
 };
